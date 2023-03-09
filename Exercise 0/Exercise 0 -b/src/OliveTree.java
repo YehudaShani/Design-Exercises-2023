@@ -7,8 +7,8 @@ public class OliveTree extends Tree {
 
     @Override
     public String toString() {
-        String response = "Olive Tree.";
-        if (getCurrentSeason() == Season.SUMMER) {
+        String response = "Olive tree.";
+        if (getCurrentSeason() == Season.FALL) {
             response += " I give fruit.";
         }
         response += " My height is: " + height + " and my color is: " + leavesColor;

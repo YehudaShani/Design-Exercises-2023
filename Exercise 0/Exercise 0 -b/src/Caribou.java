@@ -12,8 +12,11 @@ public class Caribou extends Animal {
     @Override
     public String toString() {
         String response = "Caribou:";
-        if (getCurrentSeason() == Season.SUMMER) {
+        if (getCurrentSeason() == Season.WINTER) {
             response += " I am migrating south.";
+        }
+        if (getCurrentSeason() == Season.SUMMER) {
+            response += " I am migrating north.";
         }
         response += " My weight is: " + weight + " and my color is: " + color;
         return response;

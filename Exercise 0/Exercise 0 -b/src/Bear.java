@@ -24,13 +24,13 @@ public class Bear extends Animal {
                 weight = (int) round(weight * 0.8);
                 break;
             case SPRING:
-                weight *= (int) round(weight * 0.75);
+                weight = (int) round(weight * 0.75);
                 break;
             case SUMMER:
-                weight *= round(weight * (float) 4 / 3);
+                weight = (int) round(weight * (float) 4 / 3);
                 break;
             case FALL:
-                weight *= (int)round (weight * 1.25);
+                weight = (int) round(weight * 1.25);
                 break;
         }
 

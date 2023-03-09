@@ -11,13 +11,13 @@ public class FigTree extends Tree {
 
     @Override
     public String toString() {
-        String response = "Fig Tree.";
+        String response = "Fig tree.";
         if (getCurrentSeason() == Season.SUMMER) {
             response += " I give fruit.";
         }
         response += " My height is: " + height;
         if (leavesColor != null) {
-            response += " and my  color is: " + leavesColor;
+            response += " and my color is: " + leavesColor;
         } else {
             response += " and I have no leaves";
         }
@@ -29,12 +29,16 @@ public class FigTree extends Tree {
         super.changeSeason();
         switch (season) {
             case WINTER:
-                height += 20;
                 leavesColor = null;
+                height += 20;
+                break;
+            case FALL:
+                height += 20;
+                leavesColor = Color.YELLOW;
                 break;
             case SPRING:
             case SUMMER:
-            case FALL:
+                height += 30;
                 leavesColor = Color.GREEN;
                 break;
         }
