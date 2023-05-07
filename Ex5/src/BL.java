@@ -11,27 +11,25 @@ import static java.util.stream.Collectors.*;
 public class BL implements IBL {
     @Override
     public Product getProductById(long productId) {
-        //To do
-        return null;
+
+        return DataSource.allProducts.stream().filter(p->p.getProductId()==productId).findFirst().get();
     }
 
     @Override
     public Order getOrderById(long orderId) {
-        //To do
-        return null;
+        return DataSource.allOrders.stream().filter(p->p.getOrderId()==orderId).findFirst().get();
+
     }
 
     @Override
     public Customer getCustomerById(long customerId) {
-        //To do
-        return null;
+        return DataSource.allCustomers.stream().filter(p->p.getId()==customerId).findFirst().get();
     }
 
 
     @Override
     public List<Product> getProducts(ProductCategory cat, double price) {
-        //To do
-        return null;
+        return DataSource.allProducts.stream().filter(p->p.getCategory().equals(cat) && p.getPrice()<=price).toList();
     }
 
     @Override
