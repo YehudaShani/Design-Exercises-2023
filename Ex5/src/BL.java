@@ -1,6 +1,7 @@
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static java.util.Collections.reverseOrder;
@@ -29,32 +30,55 @@ public class BL implements IBL {
 
     @Override
     public List<Product> getProducts(ProductCategory cat, double price) {
-        return DataSource.allProducts.stream().filter(p->p.getCategory().equals(cat) && p.getPrice()<=price).toList();
+        return DataSource.allProducts.stream()
+                .filter(p->p.getCategory().equals(cat) && p.getPrice()<=price)
+                .sorted(Comparator.comparingDouble(Product::getPrice).reversed())
+                .toList();
     }
 
     @Override
     public List<Customer> popularCustomers() {
-        //To do
-        return null;
+        return DataSource.allCustomers.stream()
+                .filter(c->c.getTier()==3 && getCustomerOrders(c.getId()).size()>10)
+                .sorted(Comparator.comparingDouble(Customer::getId).reversed())
+                .toList();
+
     }
 
     @Override
     public List<Order> getCustomerOrders(long customerId) {
-        //To do
-        return null;
+        return DataSource.allOrders
+                .stream()
+                .filter(o->o.getCustomrId()==customerId)
+                .sorted(Comparator.comparingDouble(Order::getOrderId).reversed())
+                .toList();
+
     }
 
     @Override
     public long numberOfProductInOrder(long orderId) {
-        //To do
-        return 0;
+        return  DataSource.allOrderProducts.stream()
+                .filter(o->o.getOrderId()==orderId)
+                .count();
     }
 
     @Override
     public List<Product> getPopularOrderedProduct(int orderedtimes) {
-        //To do
-        return null;
+
+        Map<Long,Integer> countOrder=
+               DataSource.allOrderProducts
+               .stream()
+               .collect(groupingBy(OrderProduct::getProductId,summingInt(OrderProduct::getQuantity)));
+
+        return countOrder.entrySet()
+                .stream().filter(x->x.getValue()>=orderedtimes)
+                .sorted(comparingByValue(reverseOrder()))
+                .limit(10)
+                .map(x->getProductById(x.getKey()))
+                .toList();
     }
+
+
 
     @Override
     public List<Product> getOrderProducts(long orderId)
