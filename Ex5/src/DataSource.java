@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.toList;
+
 
 public class DataSource {
 
@@ -17,7 +19,8 @@ public class DataSource {
     public static List<Product> allProducts;
     public static List<OrderProduct> allOrderProducts;
     // Update this path according to your data files location
-    public static String basePath = "data_files/";
+    public static String basePath = "C:\\Users\\David Ohhana\\Desktop\\College\\OO design and programming\\Design-Exercises-2023\\Ex5\\src\\data_files\\".replace('\\','/');
+    //public static String basePath ="";
     public static String customersPath = basePath + "customers.txt";
     public static String ordersPath = basePath + "orders.txt";
     public static String productsPath = basePath + "products.txt";
@@ -36,9 +39,10 @@ public class DataSource {
 
     public static List<Customer> readCustomersfromFile() throws IOException {
         Stream<Customer> customer = Files.
-                lines(Path.of(customersPath))
+                readString(Path.of(customersPath))
+                .lines()
                 .map(line -> new Customer(line));
-        return customer.toList();
+        return customer.collect(toList());
     }
 
     public static List<Order> readOrdersfromFile() throws IOException {
