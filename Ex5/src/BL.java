@@ -139,6 +139,7 @@ public class BL implements IBL {
 
     @Override
     public List<Order> getExpensiveOrders(double price) {
+
         return DataSource.allOrderProducts
                 .stream()
                 .filter(o->sumOfOrder(o.getOrderId())>price)

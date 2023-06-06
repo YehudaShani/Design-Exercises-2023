@@ -50,7 +50,7 @@ public class DataSource {
                 lines(Path.of(ordersPath))
                 .map(line -> new Order(line));
 
-        return order.toList();
+        return order.collect(toList());
     }
 
     public static List<Product> readProductsfromFile() throws IOException {
