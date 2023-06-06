@@ -34,7 +34,7 @@ public class LongPrintVisit implements IElementVisitor{
     public void visit(Kid kid) {
 
         longPrint+="A ";
-        longPrint+= LocalDate.now().getYear()-kid.getBirthYear()+ " year old kid with "+ kid.getHairColor().toString().toLowerCase()+" heir. ";
+        longPrint+= LocalDate.now().getYear()-kid.getBirthYear()+ " year old kid with "+ kid.getHairColor().toString().toLowerCase()+" hair. ";
     }
 
     @Override
@@ -44,7 +44,7 @@ public class LongPrintVisit implements IElementVisitor{
 
     @Override
     public void visit(Flag flag) {
-        longPrint+="A "+flag.getName()+" in "+flag.carrierHeight+" carrier height and "+flag.color+" color. ";
+        longPrint+="A "+flag.getName()+" with color: "+flag.getColor().toString()+" of height "+flag.getCarrierHeight()+". ";
     }
 
     @Override
