@@ -1,4 +1,8 @@
  
+/**
+ * The Main class contains methods for creating and interacting with paintings and papers, including menus for adding
+ * elements and printing information.
+ */
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -12,6 +16,10 @@ import static java.util.stream.Collectors.toMap;
 
 public class Main {
 
+    /**
+     * The function prompts the user to choose between two options and calls a corresponding menu function based on the
+     * user's choice.
+     */
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose from the following options:\n" +
