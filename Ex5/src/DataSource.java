@@ -19,7 +19,7 @@ public class DataSource {
     public static List<Product> allProducts;
     public static List<OrderProduct> allOrderProducts;
     // Update this path according to your data files location
-    public static String basePath = "C:\\Users\\David Ohhana\\Desktop\\College\\OO design and programming\\Design-Exercises-2023\\Ex5\\src\\data_files\\".replace('\\','/');
+    public static String basePath = "src/data_files/";
     //public static String basePath ="";
     public static String customersPath = basePath + "customers.txt";
     public static String ordersPath = basePath + "orders.txt";
